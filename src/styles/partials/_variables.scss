@@ -1,0 +1,33 @@
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+$mobile-breakpoint: 320px;
+$regular-fontWeight:400;
+$demi-fontWeight:600;
+$bold-fontWeight:700;
+$primary-fontFamily:"Avenir Next";
+$primary-intelliBlack:#323232;
+$primary-intelliBlue:#0095FF;
+$primary-white:#FFF;
+$secondary-silver: #AFAFAF;
+$secondary-DarkBlack: #000;
+$secondary-mercury: #E1E1E1;
+$secondary-alabaster: #FAFAFA;
+
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Regular.otf) format('opentype');
+    font-weight: $regular-fontWeight;
+}
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Demi.otf) format('opentype');
+    font-weight: $demi-fontWeight;
+}
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Bold.otf) format('opentype');
+    font-weight: $bold-fontWeight;
+}

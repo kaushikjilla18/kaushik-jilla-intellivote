@@ -1,0 +1,9 @@
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixin' as *;
+
+
+body{
+    text-align: center;
+    background-color:beige;
+    font-family:$primary-fontFamily;
+  }

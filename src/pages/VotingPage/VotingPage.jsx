@@ -68,6 +68,8 @@ function VotingPage() {
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
     const [showForm, setShowForm] = useState(false);
+    const [showResults, setShowResults] = useState(false);
+    const [results, setResults] = useState('');
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
@@ -89,30 +91,38 @@ function VotingPage() {
         console.log('Question:', question);
         console.log('Options:', options);
         console.log('Selected Option:', selectedOption);
+        setShowResults(true);
     };
+
+    const handleOption = (e) => {
+        setResults(e.target.value);
+    }
 
     return (
         <div className="voting-app">
             <h1>Voting App</h1>
-            <div className="form-group">
-                <label>Question:</label>
-                <input
-                    type="text"
-                    value={question}
-                    onChange={(event) => setQuestion(event.target.value)}
-                />
-            </div>
-            <div className="form-group">
-                <label>Options:</label>
-                <select onChange={handleOptionChange}>
-                    <option value="">Select Option Type</option>
-                    <option value="checkbox">Checkbox</option>
-                    <option value="radio">Radio Button</option>
-                </select>
-            </div>
-            <div>
-                <button className="create-btn" onClick={handleCreateClick}>Create</button>
-            </div>
+            {!showForm && (
+                <div>
+                    <div className="form-group">
+                        <label>Question:</label>
+                        <input
+                            type="text"
+                            value={question}
+                            onChange={(event) => setQuestion(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Options:</label>
+                        <select onChange={handleOptionChange}>
+                            <option value="">Select Option Type</option>
+                            <option value="checkbox">Checkbox</option>
+                            <option value="radio">Radio Button</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button className="create-btn" onClick={handleCreateClick}>Create</button>
+                    </div>
+                </div>)}
             {showForm && (
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -123,13 +133,13 @@ function VotingPage() {
                             {options.map((option, index) => (
                                 <div key={index}>
                                     {selectedOption === 'checkbox' ? (
-                                         <div>
-                                        <input type="checkbox" value={option} />
-                                        {option}
+                                        <div>
+                                            <input type="checkbox" value={option} onChange={(e) => handleOption(e)}/>
+                                            {option}
                                         </div>
                                     ) : (
                                         <div>
-                                            <input type="radio" name="option" value={option} />
+                                            <input type="radio" name="option" value={option} onChange={(e) => handleOption(e)}/>
                                             {option}
                                         </div>
                                     )}
@@ -140,6 +150,7 @@ function VotingPage() {
                     <button className="submit-btn" type="submit">Submit Answer</button>
                 </form>
             )}
+            {showResults && <h4>{`Results:${results}`}</h4>}
         </div>
     );
 }
