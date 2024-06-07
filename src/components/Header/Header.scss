@@ -1,6 +1,6 @@
-
-// @use '../../styles/partials/variables' as *;
-// @use '../../styles/partials/mixin' as *;
+@use "../../styles/partials/global" as *;
+@import "../../styles/partials/mixin.scss";
+@import "../../styles/partials/variables.scss";
 
 .App-header {
     padding: 1rem 1rem;

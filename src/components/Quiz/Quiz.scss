@@ -1,0 +1,19 @@
+
+
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+
+    &__question {
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding: 1.3rem 1.3rem;
+        border-radius: 30px;
+        background: #3c3473;
+    color: #E1E1E1;
+      }
+  }
+  
+ 

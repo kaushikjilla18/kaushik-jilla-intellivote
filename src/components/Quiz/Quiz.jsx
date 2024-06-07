@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import './Quiz.scss';
 
 const Quiz = () => {
 
@@ -35,14 +36,19 @@ const Quiz = () => {
         )
     }
 
+    // const parser = new DOMParser();
+    // const decodedQuestion = parser.parseFromString(questions.question, 'text/html');
 
     return (
         <>
-            <h5>{questions.question}</h5>
-            <div>
-                <button onClick={() => handleClick(questionCountId)}>True</button>
-                <button>False</button>
+            <div className="quiz-container">
+                <h5 className="quiz-container__question">{questions.question}</h5>
+                <div>
+                    <button onClick={() => handleClick(questionCountId)}>True</button>
+                    <button>False</button>
+                </div>
             </div>
+
         </>
 
     )

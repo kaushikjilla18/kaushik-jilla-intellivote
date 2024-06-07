@@ -1,3 +1,7 @@
+@use "../../styles/partials/global" as *;
+@import "../../styles/partials/mixin.scss";
+@import "../../styles/partials/variables.scss";
+
 .landing-title {
     color: #323232;
 
