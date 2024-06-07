@@ -10,6 +10,10 @@ const Quiz = () => {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [questionCountId, setQuestionCountId] = useState(1);
+    const [resultText, setResultText] = useState('');
+    const [btnClass, setBtnClass] = useState('');
+    const [isCorrect, setIsCorrect] = useState(null);
+    const [userAnswer, setUserAnswer] = useState('');
 
     const baseURL = 'http://localhost:5050/quiz';
 
@@ -19,13 +23,27 @@ const Quiz = () => {
             setQuestions(response.data);
             setLoading(false);
             setQuestionCountId(prevCount => prevCount + 1);
-            console.log(response);
+            setResultText('');
+            setBtnClass('');
+            // console.log(response);
         } catch (error) {
             console.log(error);
         }
     }
-
-    // const selectedQuestionId = questionCountId;
+    const handleClickOption = (id, answer) => {
+        setTimeout(() => handleClick(id), 2000);
+        console.log(questions.correct_answer, "correct answer")
+        if (answer === questions.correct_answer) {
+            setResultText('Correct');
+            setBtnClass('quiz-btnContainer__btn--primary');
+            setIsCorrect(answer === questions.correctAnswer);
+            setUserAnswer(answer);
+            // setIsCorrect(answer === correctAnswer);
+        } else {
+            setResultText('Incorrect');
+            // setBtnClass('quiz-btnContainer__btn--inCorrect');
+        }
+    }
 
     if (loading) {
         return (
@@ -36,19 +54,16 @@ const Quiz = () => {
         )
     }
 
-    // const parser = new DOMParser();
-    // const decodedQuestion = parser.parseFromString(questions.question, 'text/html');
-
     return (
         <>
             <div className="quiz-container">
                 <h5 className="quiz-container__question">{questions.question}</h5>
-                <div>
-                    <button onClick={() => handleClick(questionCountId)}>True</button>
-                    <button>False</button>
+                <div className="quiz-btnContainer">
+                    <button onClick={(e) => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn ${isCorrect !== null && 'True' === questions.correctAnswer ? 'quiz-btnContainer__btn--primary' : isCorrect !== null && 'False' === userAnswer ? 'quiz-btnContainer__btn--incorrect' : ''}`}>True</button>
+                    <button onClick={(e) => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn ${isCorrect !== null && 'False' === questions.correctAnswer ? 'quiz-btnContainer__btn--primary' : isCorrect !== null && 'True' === userAnswer ? 'quiz-btnContainer__btn--incorrect' : ''}`}>False</button>
                 </div>
             </div>
-
+            {resultText && <h5>{`Your answer is: ${resultText}`}</h5>}
         </>
 
     )

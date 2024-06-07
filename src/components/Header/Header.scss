@@ -5,8 +5,10 @@
 .App-header {
     padding: 1rem 1rem;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+    background-color: #fff;
     // @include tablet {
     //     display: flex;
     //     align-items: center;
@@ -99,6 +101,7 @@
         font-weight: 600;
         padding-left: 1rem;
         color: #363062;
+        margin: 0;
         // padding-top: .5rem;
         // color: $primary-brainFlixBlack;
 
