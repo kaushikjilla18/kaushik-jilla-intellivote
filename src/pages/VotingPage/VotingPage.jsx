@@ -1,67 +1,7 @@
-// import { useState } from "react";
-// import Poll from '../Poll/Poll';
-
-
-// const VotingPage = () => {
-
-//     const [startPoll, setStartPoll] = useState(false);
-//     const [question, setQuestion] = useState(null);
-//     const [createQuestion, setCreateQuestion] = useState(false);
-
-//     const createPoll = () => {
-//         console.log("clicked");
-//         setStartPoll(true);
-//     }
-//     const showQuestion = (e) => {
-//         const que = e.target.value;
-//         setQuestion(que);
-//     }
-
-//     const handleCreate = (event) => {
-//         event.preventDefault();
-//         console.log('question submitted')
-//     }
-//     return (
-//         <>
-//             {!startPoll ?
-//                 <div>
-//                     <h3>Create-a-Poll</h3>
-//                     <button onClick={createPoll}>Start</button>
-//                 </div>
-//                 :
-//                 <form type='submit'>
-//                     <h3>Question</h3>
-//                     {!question && <div>
-//                         <input name='question' placeholder='question' onClick={showQuestion} />
-//                     </div>}
-//                     {question && <h3>{question}?</h3>}
-//                     <select name="options" id="options">
-//                         <option value="Checkbox">Checkboxes</option>
-//                         <option value="radio-btn">Radio button</option>
-//                         {/* <option value="opel">Opel</option>
-//                         <option value="audi">Audi</option> */}
-//                     </select>
-//                     <input name='opt1' placeholder='opt1'/>
-//                     <input name='opt2' placeholder='opt2'/>
-//                     {/* <input type='radio' id='yes' name='yes' value='yes' />
-//                     <label htmlFor="yes">Yes</label><br />
-//                     <input type='radio' id='no' name='no' value='no' />
-//                     <label htmlFor="no">No</label><br /> */}
-//                     <div>
-//                     <button onClick={handleCreate}>Create</button>
-//                     </div>
-
-//                 </form>
-//             }
-//         </>
-//     )
-// }
-
-// export default VotingPage;
-
 
 import React, { useState } from 'react';
 import './VotingPage.scss';
+import axios from "axios";
 
 function VotingPage() {
     const [question, setQuestion] = useState('');
@@ -71,21 +11,44 @@ function VotingPage() {
     const [showResults, setShowResults] = useState(false);
     const [results, setResults] = useState('');
 
+    const baseURL = 'http://localhost:5050';
+
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
 
-    const handleCreateClick = () => {
-        setShowForm(true);
-        setOptions([]); // Reset options when creating a new question
+    const handleCreateClick = async () => {
         if (selectedOption === 'checkbox') {
             setOptions(['Definetely Yes', 'Not sure', 'No way']); // Example options for checkbox
         } else if (selectedOption === 'radio') {
             setOptions(['Yes', 'No']); // Example options for radio
         }
+
+        const newQuestion = {
+            question: question,
+            yes: 0,
+            no: 0
+        };
+        try {
+            const response = await axios.post(`${baseURL}/questions`, newQuestion);
+            setShowResults(true);
+            console.log(response);
+            setShowForm(true);
+            if (selectedOption === 'checkbox') {
+                setOptions(['Definetely Yes', 'Not sure', 'No way']); // Example options for checkbox
+            } else if (selectedOption === 'radio') {
+                setOptions(['Yes', 'No']); // Example options for radio
+            }
+            // setOptions([]); // Reset options when creating a new question
+        } catch (error) {
+            console.log(error);
+        }
+        // setShowForm(true);
+        // setOptions([]); // Reset options when creating a new question
+       
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // Logic to submit the answer goes here
         console.log('Question:', question);
@@ -100,9 +63,9 @@ function VotingPage() {
 
     return (
         <div className="voting-app">
-            <h1>Voting App</h1>
+            <h2>Poll App</h2>
             {!showForm && (
-                <div>
+                <div className='voting-container'>
                     <div className="form-group">
                         <label>Question:</label>
                         <input
@@ -134,12 +97,12 @@ function VotingPage() {
                                 <div key={index}>
                                     {selectedOption === 'checkbox' ? (
                                         <div>
-                                            <input type="checkbox" value={option} onChange={(e) => handleOption(e)}/>
+                                            <input type="checkbox" value={option} onChange={(e) => handleOption(e)} />
                                             {option}
                                         </div>
                                     ) : (
                                         <div>
-                                            <input type="radio" name="option" value={option} onChange={(e) => handleOption(e)}/>
+                                            <input type="radio" name="option" value={option} onChange={(e) => handleOption(e)} />
                                             {option}
                                         </div>
                                     )}
