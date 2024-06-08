@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './VotingPage.scss';
 import axios from "axios";
 
@@ -12,6 +13,7 @@ function VotingPage() {
     const [results, setResults] = useState('');
 
     const baseURL = 'http://localhost:5050';
+    const navigate = useNavigate();
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
@@ -31,6 +33,8 @@ function VotingPage() {
         };
         try {
             const response = await axios.post(`${baseURL}/questions`, newQuestion);
+            console.log(response.data);
+            navigate(`/voting/${response.data[response.data.length - 1].qid}`);
             setShowResults(true);
             console.log(response);
             setShowForm(true);

@@ -38,10 +38,8 @@ const Quiz = () => {
             setBtnClass('quiz-btnContainer__btn--primary');
             setIsCorrect(answer === questions.correctAnswer);
             setUserAnswer(answer);
-            // setIsCorrect(answer === correctAnswer);
         } else {
             setResultText('Incorrect');
-            // setBtnClass('quiz-btnContainer__btn--inCorrect');
         }
     }
 
