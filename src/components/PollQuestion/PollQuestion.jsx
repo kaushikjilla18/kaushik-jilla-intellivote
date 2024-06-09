@@ -6,7 +6,7 @@ const PollQuestion = () => {
 
     const [data, setData] = useState('');
     const [notifyText, setNotifyText] = useState(false);
-    const [error, setError] = useState('');
+    const [errorText, setErrorText] = useState('');
 
     const params = useParams();
     const baseURL = 'http://localhost:5050/questions';
@@ -56,7 +56,13 @@ const PollQuestion = () => {
         } else if (event.target.option.value === 'No') {
             answer = 'No'
         }
-        UpdateResult(params.id, answer);
+        //Validate if answer has value
+        if(answer){
+            UpdateResult(params.id, answer);
+            setErrorText('');
+        } else{
+            setErrorText('Please select an answer');
+        }
     };
 
     return (
@@ -76,6 +82,7 @@ const PollQuestion = () => {
                 </div>
                 <button className="submit-btn" type="submit">Submit Answer</button>
             </form>
+            {errorText && <div>{errorText}</div>}
             {notifyText && <div>
                 Your answer was successfully updated. Redirecting to Home page.
             </div>

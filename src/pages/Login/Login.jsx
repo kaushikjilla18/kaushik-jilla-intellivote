@@ -1,21 +1,22 @@
+import './Login.scss';
+
 const Login = () => {
     return (
-        <form>
-            <h2>Login Page</h2>
-            <div>
-                <label>Username</label>
+        <form className="login">
+            <h2 className="login__title">Login Page</h2>
+            <div className="login__input-group">
+                <label className="login__label">Username</label>
+                <input className="login__input" placeholder="Username" type="text" />
             </div>
-            <input placeholder="Username" type="text" />
-            <div>
-                <label>Password</label>
+            <div className="login__input-group">
+                <label className="login__label">Password</label>
+                <input className="login__input" placeholder="Password" type="password" />
             </div>
-            <input placeholder="Password" type="password" />
-
-            <div>
-                <button>Login</button>
+            <div className="login__button-group">
+                <button className="login__button">Login</button>
             </div>
         </form>
-    )
+    );
 }
 
 export default Login;

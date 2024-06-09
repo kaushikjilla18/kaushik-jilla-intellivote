@@ -17,36 +17,60 @@ const Quiz = () => {
     const [message, setMessage] = useState('');
     const [questionCountLimit, setQuestionCountLimit] = useState('');
     const [questionCountInput, setQuestionCountInput] = useState('');
-   
 
     const baseURL = 'http://localhost:5050/quiz';
     const navigate = useNavigate();
 
+    const validateQuestionCountLimit = () => {
+        const count = parseInt(questionCountLimit);
+        return !isNaN(count) && count > 0;
+    };
+
+    const handleInputChange = (event) => {
+        setQuestionCountInput(event.target.value);
+        setQuestionCountLimit(event.target.value); // Set question count limit as the user types
+    };
+
     const handleClick = async (id) => {
-        try {
-            const response = await axios.get(`${baseURL}/${id}`);
-            setQuestions(response.data);
-            setLoading(false);
-            setQuestionCountId(prevCount => prevCount + 1);
-            setResultText('');
-            setBtnClass('');
-        } catch (error) {
-            console.log(error, "Error getting questions");
-            if (error.response?.data.message) {
-                setMessage('End of Questions, redirecting to home page');
-                //navigate to home page
-                //Navigate to results page instead
-                setTimeout(() => navigate('/'), 2500);
+        if (!validateQuestionCountLimit()) {
+            setMessage('Please enter a valid question count limit.');
+            return;
+        }
+
+        if (Number(questionCountLimit) + 1 === Number(id)) {
+            console.log(questionCountLimit, "questionCountLimit");
+            console.log(id, "id");
+            setMessage('End of Questions, redirecting to home page');
+            //navigate to home page
+            //Navigate to results page instead
+            setTimeout(() => navigate('/'), 2500);
+        } else {
+            try {
+                const response = await axios.get(`${baseURL}/${id}`);
+                setQuestions(response.data);
+                setLoading(false);
+                setQuestionCountId(prevCount => prevCount + 1);
+                setResultText('');
+                setBtnClass('');
+            } catch (error) {
+                console.log(error, "Error getting questions");
+                if (error.response?.data.message) {
+                    setMessage('End of Questions, redirecting to home page');
+                    //navigate to home page
+                    //Navigate to results page instead
+                    setTimeout(() => navigate('/'), 2500);
+                }
             }
         }
     }
+    
     const handleClickOption = (id, answer) => {
-       
-    //    if( id <= questionCountLimit){
+
+        //    if( id <= questionCountLimit){
         setTimeout(() => handleClick(id), 1500);
-    //    } else{
-    //     setMessage('End of Questions, redirecting to home page');
-    //    }
+        //    } else{
+        //     setMessage('End of Questions, redirecting to home page');
+        //    }
         console.log(questions.correct_answer, "correct answer")
         if (answer === questions.correct_answer) {
             setResultText('Correct');
@@ -57,11 +81,19 @@ const Quiz = () => {
         }
     }
 
+
+
     if (loading) {
         return (
             <div>
                 <h3>Let's dive into the pool of questions</h3>
-                <input type='text' name='questionCount' placeholder='questionCount'/>
+                <input
+                    type='text'
+                    name='questionCount'
+                    placeholder='Question count limit'
+                    value={questionCountInput}
+                    onChange={handleInputChange}
+                />
                 <button className="App-header__link-btn" onClick={() => handleClick(questionCountId)}>Start</button>
             </div>
         )
