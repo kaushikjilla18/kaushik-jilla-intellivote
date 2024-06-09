@@ -15,7 +15,7 @@ function Header() {
 
             <div>
                 <Link to='/voting' className="App-header__link">
-                    <button className="App-header__link-btn App-header__link-btn--voting">Voting</button>
+                    <button className="App-header__link-btn App-header__link-btn--voting">Poll</button>
                 </Link>
                 <Link to='/quiz' className="App-header__link">
                     <button className="App-header__link-btn">Quiz</button>

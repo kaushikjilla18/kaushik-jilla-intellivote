@@ -6,6 +6,8 @@ const PollQuestion = () => {
 
     const [data, setData] = useState('');
     const [notifyText, setNotifyText] = useState(false);
+    const [error, setError] = useState('');
+
     const params = useParams();
     const baseURL = 'http://localhost:5050/questions';
     const navigate = useNavigate();
@@ -41,7 +43,6 @@ const PollQuestion = () => {
             return response.data; // return response
         } catch (error) {
             console.log("Error updating result:", error);
-            throw error; // rethrow the error for further handling
         }
     }
 
