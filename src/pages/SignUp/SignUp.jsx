@@ -1,27 +1,28 @@
+import './SignUp.scss';
+
+
 const SignUp = () => {
-
   return (
-    <form>
-      <h2>Sign Up page</h2>
-      <div>
-        <label>Username</label>
+    <form className="signUp">
+      <h2 className="signUp__title">Sign Up page</h2>
+      <div className="signUp__field">
+        <label className="signUp__label">Username</label>
+        <input className="signUp__input" placeholder="Username" type="text" />
       </div>
-      <input placeholder="Username" type="text" />
-      <div>
-        <label>Name</label>
+      <div className="signUp__field">
+        <label className="signUp__label">Name</label>
+        <input className="signUp__input" placeholder="Name" type="text" />
       </div>
-      <input placeholder="Name" type="text" />
-      <div>
-        <label>Create a Password</label>
+      <div className="signUp__field">
+        <label className="signUp__label">Create a Password</label>
+        <input className="signUp__input" placeholder="Password" type="password" />
       </div>
-      <input placeholder="Password" type="password" />
-      <div>
-        <label>Re-type Password</label>
+      <div className="signUp__field">
+        <label className="signUp__label">Re-type Password</label>
+        <input className="signUp__input" placeholder="Password" type="password" />
       </div>
-      <input placeholder="Password" type="password" />
-
-      <div>
-        <button>Signup</button>
+      <div className="signUp__button-group">
+        <button className="signUp__button">Sign up</button>
       </div>
     </form>
   )
