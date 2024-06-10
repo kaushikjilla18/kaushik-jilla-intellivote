@@ -23,7 +23,9 @@ Intellivote provides users with a seamless voting experience, with its intuitive
 - Quiz questions Display
 
 ## Implementation
-Yet to be decided.
+Frontend Development: Begin by designing and developing the user interface components using React.js, ensuring responsiveness and accessibility.
+
+Backend Development: Implement server-side logic using Node.js with Express.js, including API endpoints for managing polls and quiz related questions.
 
 ### Tech Stack
 
