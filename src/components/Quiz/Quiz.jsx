@@ -37,8 +37,6 @@ const Quiz = () => {
         }
 
         if (Number(questionCountLimit) + 1 === Number(id)) {
-            console.log(questionCountLimit, "questionCountLimit");
-            console.log(id, "id");
             setMessage('End of Questions, redirecting to home page');
             //navigate to home page
             //Navigate to results page instead

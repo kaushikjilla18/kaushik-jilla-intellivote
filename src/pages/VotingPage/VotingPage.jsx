@@ -23,7 +23,6 @@ function VotingPage() {
     };
 
     const handleOptionTypeChange = (event) => {
-        console.log(event.target.value);
         setOptionType(event.target.value);
     };
 
@@ -52,10 +51,8 @@ function VotingPage() {
         };
         try {
             const response = await axios.post(`${baseURL}/questions`, newQuestion);
-            console.log(response.data);
             navigate(`/voting/${response.data[response.data.length - 1].qid}`);
             setShowResults(true);
-            console.log(response);
             setShowForm(true);
             // Reset error message
             setError('');

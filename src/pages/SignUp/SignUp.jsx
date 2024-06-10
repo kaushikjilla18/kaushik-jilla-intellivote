@@ -44,8 +44,6 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateInputs()) {
-            // Perform signup action
-            console.log("Form submitted successfully");
             setSubmitted(true);
         } else {
             console.log("Form has errors");

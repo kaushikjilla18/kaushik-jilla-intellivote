@@ -12,15 +12,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
-      <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/voting" element={<VotingPage />} />
         <Route path="/voting/:id" element={<PollQuestion />} />
-        <Route path="/quiz" element={<Quiz/>} />
+        <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        
       </Routes>
     </BrowserRouter>
 

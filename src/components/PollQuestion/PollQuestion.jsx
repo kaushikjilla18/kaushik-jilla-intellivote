@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import './PollQuestion.scss';
 
 const PollQuestion = () => {
 
@@ -21,15 +22,12 @@ const PollQuestion = () => {
     }, [params.id]);
 
     const UpdateResult = async (id, answer) => {
-        console.log(answer, ": answer");
         let updateResult;
         if (answer === 'Yes') {
             updateResult = "incrementYes";
-            console.log(typeof (result), "typeof result");
         } else if (answer === 'No') {
             updateResult = "incrementNo";
         } else {
-            console.log("Invalid answer:", answer);
             return; // or throw an error
         }
         try {
@@ -67,23 +65,22 @@ const PollQuestion = () => {
 
     return (
         <>
-            <h3>New question</h3>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Question: {data.question}</label>
+            <form onSubmit={handleSubmit} className="voting-form">
+                <div className="voting-form__group">
+                    <label className="voting-form__label">Question: {data.question}</label>
                 </div>
-                <div>
-                    <input type="radio" name="option" value="Yes" />
-                    Yes
+                <div className="voting-form__option">
+                    <input type="radio" name="option" value="Yes" className="voting-form__radio"/>
+                    <label htmlFor="option-yes" className="voting-form__label">Yes</label>
                 </div>
-                <div>
-                    <input type="radio" name="option" value="No" />
-                    No
+                <div className="voting-form__option">
+                    <input type="radio" name="option" value="No" className="voting-form__radio"/>
+                    <label htmlFor="option-no" className="voting-form__label">No</label>
                 </div>
-                <button className="submit-btn" type="submit">Submit Answer</button>
+                <button className="voting-form__submit-btn" type="submit">Submit Answer</button>
             </form>
-            {errorText && <div>{errorText}</div>}
-            {notifyText && <div>
+            {errorText && <div className="voting-form__error">{errorText}</div>}
+            {notifyText && <div className="voting-form__notification">
                 Your answer was successfully updated. Redirecting to Home page.
             </div>
             }

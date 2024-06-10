@@ -1,0 +1,60 @@
+.voting-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-top: 3rem;
+
+    &__group {
+        margin-bottom: 1.1rem;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    &__option {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 10px;
+
+        .voting-form__radio {
+            margin-right: 10px;
+        }
+    }
+
+    &__submit-btn {
+        padding: 12px 24px;
+        background-color: #363062;;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #7d73bd;
+        }
+    }
+
+    &__error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    &__notification {
+        color: green;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}
