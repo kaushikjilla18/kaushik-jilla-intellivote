@@ -27,54 +27,6 @@
     font-weight: $bold-fontWeight;
 }
 
-// h1 {
-//     @include mobile-header();
-
-//     @include tablet {
-//         @include desktop-header();
-//     }
-// }
-
-// h2 {
-//     @include mobile-subheader();
-
-//     @include tablet {
-//         @include desktop-subheader();
-//     }
-// }
-
-// h3 {
-//     @include mobile-btn-font();
-
-//     @include tablet {
-//         @include desktop-btn-font();
-//     }
-// }
-
-// h4 {
-//     @include mobile-table-header();
-
-//     @include tablet {
-//         @include desktop-table-header();
-//     }
-// }
-
-// h5, h6 {
-//     @include mobile-copy-lrg();
-
-//     @include tablet {
-//         @include desktop-copy-lrg();
-//     }
-// }
-
-// p {
-//     @include mobile-copy-med();
-
-//     @include tablet {
-//         @include desktop-copy-med();
-//     }
-// }
-
 /* -------------------------------------------------------------------------- */
 /*                                BASE STYLING                                */
 /* -------------------------------------------------------------------------- */
@@ -85,44 +37,3 @@
     padding: 0;
     font-family:$primary-fontFamily;
 }
-
-ul {
-    padding: 0;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    display: inline-block;
-    text-decoration: none;
-    // @include mobile-btn-font();
-}
-
-// input {
-//     font-family: "Titillium";
-//     border: 1px $s-light solid;
-//     padding: calc($m-padding / 2) $m-padding;
-//     border-radius: 20px;
-//     width: 100%;
-
-//     &:focus {
-//         outline: none;
-//         border-color: $p-highlight;
-//     }
-// }
-
-// .radio-btn {
-//     color: $s-dark;
-    
-//     &__input {
-//         accent-color: $p-highlight;
-//         margin-right: 8px;
-//         width: auto;
-
-//         &:checked + .radio-btn__label {
-//             color: $p-dark;
-//         };
-//     }
-// }

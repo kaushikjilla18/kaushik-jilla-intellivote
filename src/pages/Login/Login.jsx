@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
@@ -72,6 +72,7 @@ const Login = () => {
                 <button className="login__button" type="submit">Login</button>
             </div>
             {submitted && <p className="login__submitted-text">Login successful! You are now logged in.</p>}
+            {<p className="login__signup-text">Not a user? <Link to='/signup' className="login__signup-link">Sign up here</Link></p>}
         </form>
     );
 }

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import './Quiz.scss';
 
 const Quiz = () => {
-
-    const params = useParams();
 
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -21,6 +19,7 @@ const Quiz = () => {
     const baseURL = 'http://localhost:5050/quiz';
     const navigate = useNavigate();
 
+    //validation check
     const validateQuestionCountLimit = () => {
         const count = parseInt(questionCountLimit);
         return !isNaN(count) && count > 0;
@@ -63,15 +62,10 @@ const Quiz = () => {
             }
         }
     }
-    
-    const handleClickOption = (id, answer) => {
 
-        //    if( id <= questionCountLimit){
+    const handleClickOption = (id, answer) => {
         setTimeout(() => handleClick(id), 1500);
-        //    } else{
-        //     setMessage('End of Questions, redirecting to home page');
-        //    }
-        console.log(questions.correct_answer, "correct answer")
+
         if (answer === questions.correct_answer) {
             setResultText('Correct');
             setIsCorrect(answer === questions.correctAnswer);
@@ -81,21 +75,24 @@ const Quiz = () => {
         }
     }
 
-
-
     if (loading) {
         return (
-            <div>
-                <h3>Let's dive into the pool of questions</h3>
-                <input
-                    type='text'
-                    name='questionCount'
-                    placeholder='Question count limit'
-                    value={questionCountInput}
-                    onChange={handleInputChange}
-                />
-                <button className="App-header__link-btn" onClick={() => handleClick(questionCountId)}>Start</button>
-            </div>
+                <div className="quiz-hero">
+                    <h3 className="quiz-hero__text">Let's dive into the pool of questions</h3>
+                    <div className="quiz-start">
+                        <input
+                            type='text'
+                            name='questionCount'
+                            placeholder='Question count limit'
+                            value={questionCountInput}
+                            onChange={handleInputChange}
+                            className="quiz-start__input"
+                        />
+                        <button className="quiz-start__btn" onClick={() => handleClick(questionCountId)}>Start</button>
+
+                    </div>
+
+                </div>
         )
     }
 
@@ -112,8 +109,8 @@ const Quiz = () => {
             <div className="quiz-container">
                 <h5 className="quiz-container__question">{questions.question}</h5>
                 <div className="quiz-btnContainer">
-                    <button onClick={(e) => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn`}>True</button>
-                    <button onClick={(e) => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn`}>False</button>
+                    <button onClick={() => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn`}>True</button>
+                    <button onClick={() => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn`}>False</button>
                 </div>
             </div>
             {resultText && <h5>{`Your answer is: ${resultText}`}</h5>}
