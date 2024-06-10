@@ -102,6 +102,7 @@ const SignUp = () => {
             <div className="signUp__button-group">
                 <button className="signUp__button" type="submit">Sign up</button>
             </div>
+            {<p className="signUp__login-text"> Already a user? <Link to='/login' className="signUp__login">Login</Link></p>}
             {submitted && <p className="signUp__submitted-text">Sign up successful! You can now log in. <Link to='/login' className="signUp__login-link">Login here</Link></p>}
         </form>
     );

@@ -1,77 +1,62 @@
+
 .voting-app {
-    // font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  
-    h1 {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__container {
+    .voting-app__form-group {
       margin-bottom: 20px;
     }
-  
-    .form-group {
-      margin-bottom: 15px;
-  
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-  
-      input[type="text"],
-      select {
-        width: 100%;
-        padding: 8px;
-        font-size: 16px;
-      }
-    }
-  
-    .options {
-      margin-top: 10px;
-  
-      div {
-        margin-bottom: 5px;
-  
-        input[type="checkbox"],
-        input[type="radio"] {
-          margin-right: 5px;
-        }
-      }
-    }
-  
-    .create-btn {
-      padding: 10px 25px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  
-    .submit-btn {
-      display: block;
-      width: 50%;
-      padding: 10px;
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin: auto;
-  
-      &:hover {
-        background-color: #218838;
-      }
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  &__input,
+  &__select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
     }
   }
-  
-.voting-container{
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+  &__create-btn {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  &__error-message {
+    color: red;
+    font-size: 14px;
+  }
 }

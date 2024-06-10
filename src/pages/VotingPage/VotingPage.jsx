@@ -73,29 +73,30 @@ function VotingPage() {
 
     return (
         <div className="voting-app">
-            <h2>Poll App</h2>
+            <h2 className="voting-app__title">Poll App</h2>
             {!showForm && (
-                <div className='voting-container'>
-                    <div className="form-group">
-                        <label>Question:</label>
+                <div className='voting-app__container'>
+                    <div className="voting-app__form-group">
+                        <label className="voting-app__label">Question:</label>
                         <input
                             type="text"
                             value={question}
+                            className="voting-app__input"
                             onChange={handleQuestionChange}
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Options:</label>
-                        <select value={optionType} onChange={handleOptionTypeChange}>
+                    <div className="voting-app__form-group">
+                        <label className="voting-app__label">Options:</label>
+                        <select className="voting-app__select" value={optionType} onChange={handleOptionTypeChange}>
                             <option value="">Select Option Type</option>
                             <option value="radio">Radio Button</option>
                         </select>
                     </div>
                     <div>
-                        <button className="create-btn" onClick={handleCreateClick}>Create</button>
+                        <button className="voting-app__create-btn" onClick={handleCreateClick}>Create</button>
                     </div>
                 </div>)}
-            {error && <div className="error-message">{error}</div>}
+            {error && <div className="voting-app__error-message">{error}</div>}
         </div>
     );
 }
