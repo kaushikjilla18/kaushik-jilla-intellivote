@@ -33,8 +33,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateInputs()) {
-            // Perform login action
-            console.log("Form submitted successfully");
             setSubmitted(true);
             //Navigate to results page instead
             setTimeout(() => navigate('/'), 2500);

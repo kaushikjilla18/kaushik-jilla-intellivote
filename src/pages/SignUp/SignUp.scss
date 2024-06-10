@@ -65,5 +65,14 @@
         text-decoration: underline;
         color: #239f23;
       }
+
+      &__login-text{
+        font-weight: 550;
+        padding-top: 0.8rem;
+      }
+
+      &__login{
+        text-decoration: none;
+      }
   }
   
