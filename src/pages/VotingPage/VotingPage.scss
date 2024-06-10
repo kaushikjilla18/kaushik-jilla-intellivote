@@ -1,0 +1,77 @@
+.voting-app {
+    // font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  
+    h1 {
+      margin-bottom: 20px;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+  
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+      }
+    }
+  
+    .options {
+      margin-top: 10px;
+  
+      div {
+        margin-bottom: 5px;
+  
+        input[type="checkbox"],
+        input[type="radio"] {
+          margin-right: 5px;
+        }
+      }
+    }
+  
+    .create-btn {
+      padding: 10px 25px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  
+    .submit-btn {
+      display: block;
+      width: 50%;
+      padding: 10px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin: auto;
+  
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  }
+  
+.voting-container{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

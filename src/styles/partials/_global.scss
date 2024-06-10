@@ -1,0 +1,39 @@
+/* -------------------------------------------------------------------------- */
+/*                                  PARTIALS                                  */
+/* -------------------------------------------------------------------------- */
+
+@use './mixin' as *;
+@use './variables' as *;
+
+/* -------------------------------------------------------------------------- */
+/*                                 TYPOGRAPHY                                 */
+/* -------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Regular.otf) format('opentype');
+    font-weight: $regular-fontWeight;
+}
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Demi.otf) format('opentype');
+    font-weight: $demi-fontWeight;
+}
+
+@font-face {
+    font-family: $primary-fontFamily;
+    src: url(../../assets/Font/AvenirNextLTPro-Bold.otf) format('opentype');
+    font-weight: $bold-fontWeight;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                BASE STYLING                                */
+/* -------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:$primary-fontFamily;
+}

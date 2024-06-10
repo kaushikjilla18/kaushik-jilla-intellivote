@@ -1,0 +1,28 @@
+@use "../../styles/partials/global" as *;
+@import "../../styles/partials/mixin.scss";
+@import "../../styles/partials/variables.scss";
+
+.landing-title {
+    color: #323232;
+
+    &__appName {
+        color: #363062;
+    }
+
+    &__btn {
+        color: white;
+        background-color: rgb(13, 32, 32);
+        padding: .6rem 1.5rem;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__text {
+        max-width: 75ch;
+        margin: auto;
+        line-height: 1.5rem;
+    }
+}
+
+// background: #e2ddf0;
