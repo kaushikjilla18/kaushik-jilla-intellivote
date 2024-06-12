@@ -96,7 +96,7 @@ const Quiz = () => {
 
     if (message) {
         return (
-            <div>
+            <div class='quiz-questionsEnd'>
                 {message}
             </div>
         )
@@ -110,8 +110,9 @@ const Quiz = () => {
                     <button onClick={() => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn`}>True</button>
                     <button onClick={() => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn`}>False</button>
                 </div>
+                {resultText && <h5 className="quiz-container__text">{`Your answer is: ${resultText}`}</h5>}
             </div>
-            {resultText && <h5>{`Your answer is: ${resultText}`}</h5>}
+           
         </>
 
     )

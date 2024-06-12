@@ -1,4 +1,5 @@
 import './App.scss';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import PollQuestion from './components/PollQuestion/PollQuestion';
 import Quiz from './components/Quiz/Quiz';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
 
   );

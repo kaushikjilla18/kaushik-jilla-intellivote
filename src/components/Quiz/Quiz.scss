@@ -2,6 +2,7 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    margin-bottom: 7rem;
 
     &__question {
         font-size: 18px;
@@ -10,6 +11,10 @@
         border-radius: 30px;
         background: #3c3473;
         color: #E1E1E1;
+    }
+
+    &__text{
+        margin-top: 1.5rem;
     }
 }
 
@@ -76,4 +81,14 @@
         color: #363062;
         cursor: pointer;
     }
+}
+
+.quiz-questionsEnd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: green;
 }

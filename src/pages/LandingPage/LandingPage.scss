@@ -3,27 +3,28 @@
 @import "../../styles/partials/variables.scss";
 
 
-.landing{
+.landing {
 
     background-image: linear-gradient(to right, #363062, #7d73bd);
-    height: 81vh;
+    height: 75vh;
     color: #E1E1E1;
     padding: 5rem 3rem;
 
-    &-title{
+    &-title {
         padding-bottom: 1rem;
-        &__appName{
+
+        &__appName {
             color: #363062;
         }
 
-        &__text{
+        &__text {
             max-width: 75ch;
             margin: auto;
             line-height: 1.5rem;
         }
     }
 
-    &__text{
+    &__text {
         padding-bottom: 1rem;
     }
 }
