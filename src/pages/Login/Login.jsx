@@ -35,7 +35,7 @@ const Login = () => {
         if (validateInputs()) {
             setSubmitted(true);
             //Navigate to results page instead
-            setTimeout(() => navigate('/'), 2500);
+            setTimeout(() => navigate('/'), 2000);
         } else {
             console.log("Form has errors");
         }

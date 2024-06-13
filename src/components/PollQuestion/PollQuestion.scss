@@ -34,7 +34,7 @@
 
     &__submit-btn {
         padding: 12px 24px;
-        background-color: #363062;;
+        background-color: #363062;
         color: #fff;
         border: none;
         border-radius: 8px;
@@ -63,4 +63,23 @@
         align-items: center;
         // height:50vh;
     }
+
+    &__results {
+        margin-top: 1rem;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+
+    &__options {
+        display: flex;
+        justify-content: space-evenly;
+
+        &-text {
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: coral;
+        }
+    }
+
+
 }

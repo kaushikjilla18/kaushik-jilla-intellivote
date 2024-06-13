@@ -30,16 +30,20 @@
         border: 1px;
         font-weight: 600;
         font-size: 1rem;
+        cursor: pointer;
 
-        &--primary {
-            color: black;
-            background-color: forestgreen;
+        // &--correct {
+        //     color: black;
+        //     background-color: forestgreen;
+        // }
 
-        }
+        // &--incorrect {
+        //     color: black;
+        //     background-color: red
+        // }
 
-        &--incorrect {
-            color: black;
-            background-color: red
+        &:hover{
+            box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
         }
     }
 }

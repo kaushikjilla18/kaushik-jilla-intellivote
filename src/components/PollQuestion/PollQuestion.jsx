@@ -8,6 +8,7 @@ const PollQuestion = () => {
     const [data, setData] = useState('');
     const [notifyText, setNotifyText] = useState(false);
     const [errorText, setErrorText] = useState('');
+    const [resultText, setResultText] = useState(false);
 
     const params = useParams();
     const baseURL = 'http://localhost:5050/questions';
@@ -34,10 +35,11 @@ const PollQuestion = () => {
             const requestData = { [updateResult]: true }; // Creating object with dynamic key
             const response = await axios.put(`${baseURL}/${id}`, requestData);
             setNotifyText(true);
+            setResultText(true);
 
 
             //Navigate to results page instead
-            setTimeout(() => navigate('/'), 2500);
+            setTimeout(() => navigate('/'), 3000);
             return response.data; // return response
         } catch (error) {
             console.log("Error updating result:", error);
@@ -55,10 +57,10 @@ const PollQuestion = () => {
             answer = 'No'
         }
         //Validate if answer has value
-        if(answer){
+        if (answer) {
             UpdateResult(params.id, answer);
             setErrorText('');
-        } else{
+        } else {
             setErrorText('Please select an answer');
         }
     };
@@ -70,16 +72,29 @@ const PollQuestion = () => {
                     <label className="voting-form__label">Question: {data.question}</label>
                 </div>
                 <div className="voting-form__option">
-                    <input type="radio" name="option" value="Yes" className="voting-form__radio"/>
+                    <input type="radio" name="option" value="Yes" className="voting-form__radio" />
                     <label htmlFor="option-yes" className="voting-form__label">Yes</label>
                 </div>
                 <div className="voting-form__option">
-                    <input type="radio" name="option" value="No" className="voting-form__radio"/>
+                    <input type="radio" name="option" value="No" className="voting-form__radio" />
                     <label htmlFor="option-no" className="voting-form__label">No</label>
                 </div>
                 <button className="voting-form__submit-btn" type="submit">Submit Answer</button>
             </form>
             {errorText && <div className="voting-form__error">{errorText}</div>}
+            {resultText && <div className="voting-form__container">
+                <div className="voting-form__results">
+                    Results
+                </div>
+                <div className="voting-form__options">
+                    <p className="voting-form__options-text">
+                        Yes - 1
+                    </p>
+                    <p className="voting-form__options-text">
+                        No - 0
+                    </p>
+                </div>
+            </div>}
             {notifyText && <div className="voting-form__notification">
                 Your answer was successfully updated. Redirecting to Home page.
             </div>

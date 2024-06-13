@@ -15,6 +15,7 @@ const Quiz = () => {
     const [message, setMessage] = useState('');
     const [questionCountLimit, setQuestionCountLimit] = useState('');
     const [questionCountInput, setQuestionCountInput] = useState('');
+    const [optionClsName, setOptionClsName] = useState('');
 
     const baseURL = 'http://localhost:5050/quiz';
     const navigate = useNavigate();
@@ -44,6 +45,7 @@ const Quiz = () => {
         } else {
             try {
                 const response = await axios.get(`${baseURL}/${id}`);
+                console.log(response.data,"data");
                 setQuestions(response.data);
                 setLoading(false);
                 setQuestionCountId(prevCount => prevCount + 1);
@@ -65,6 +67,7 @@ const Quiz = () => {
         setTimeout(() => handleClick(id), 1500);
 
         if (answer === questions.correct_answer) {
+            setOptionClsName(questions.correct_answer);
             setResultText('Correct');
             setIsCorrect(answer === questions.correctAnswer);
             setUserAnswer(answer);
@@ -107,12 +110,11 @@ const Quiz = () => {
             <div className="quiz-container">
                 <h5 className="quiz-container__question">{questions.question}</h5>
                 <div className="quiz-btnContainer">
-                    <button onClick={() => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn`}>True</button>
-                    <button onClick={() => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn`}>False</button>
+                    <button onClick={() => handleClickOption(questionCountId, 'True')} className={`quiz-btnContainer__btn  ${optionClsName === 'True' ? 'quiz-btnContainer__btn--correct':'quiz-btnContainer__btn--incorrect'}`}>True</button>
+                    <button onClick={() => handleClickOption(questionCountId, 'False')} className={`quiz-btnContainer__btn  ${optionClsName === 'True' ? 'quiz-btnContainer__btn--correct':'quiz-btnContainer__btn--incorrect'}`}>False</button>
                 </div>
                 {resultText && <h5 className="quiz-container__text">{`Your answer is: ${resultText}`}</h5>}
             </div>
-           
         </>
 
     )
