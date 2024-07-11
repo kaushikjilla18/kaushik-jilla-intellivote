@@ -11,17 +11,21 @@ const PollQuestion = () => {
     const [resultText, setResultText] = useState(false);
 
     const params = useParams();
-    // const baseURL = 'http://localhost:5050/questions';
     const baseURL = `${process.env.REACT_APP_API_URL}/questions`;
     const navigate = useNavigate();
 
     useEffect(() => {
         const getQuestion = async () => {
-            const response = await axios.get(`${baseURL}/${params.id}`);
-            setData(response.data);
+            console.log(params.id, "params id");
+            try {
+                const response = await axios.get(`${baseURL}/${params.id}`);
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching question:', error);
+            }
         }
         getQuestion();
-    }, [params.id]);
+    }, [params.id, baseURL]);
 
     const UpdateResult = async (id, answer) => {
         let updateResult;
