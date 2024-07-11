@@ -9,9 +9,9 @@ const Quiz = () => {
     const [loading, setLoading] = useState(true);
     const [questionCountId, setQuestionCountId] = useState(1);
     const [resultText, setResultText] = useState('');
-    const [btnClass, setBtnClass] = useState('');
-    const [isCorrect, setIsCorrect] = useState(null);
-    const [userAnswer, setUserAnswer] = useState('');
+    // const [btnClass, setBtnClass] = useState('');
+    // const [isCorrect, setIsCorrect] = useState(null);
+    // const [userAnswer, setUserAnswer] = useState('');
     const [message, setMessage] = useState('');
     const [questionCountLimit, setQuestionCountLimit] = useState('');
     const [questionCountInput, setQuestionCountInput] = useState('');
@@ -50,7 +50,7 @@ const Quiz = () => {
                 setLoading(false);
                 setQuestionCountId(prevCount => prevCount + 1);
                 setResultText('');
-                setBtnClass('');
+                // setBtnClass('');
             } catch (error) {
                 console.log(error, "Error getting questions");
                 if (error.response?.data.message) {
@@ -69,8 +69,8 @@ const Quiz = () => {
         if (answer === questions.correct_answer) {
             setOptionClsName(questions.correct_answer);
             setResultText('Correct');
-            setIsCorrect(answer === questions.correctAnswer);
-            setUserAnswer(answer);
+            // setIsCorrect(answer === questions.correctAnswer);
+            // setUserAnswer(answer);
         } else {
             setResultText('Incorrect');
         }

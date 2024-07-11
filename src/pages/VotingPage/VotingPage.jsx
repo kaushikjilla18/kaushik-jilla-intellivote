@@ -6,11 +6,11 @@ import axios from "axios";
 
 function VotingPage() {
     const [question, setQuestion] = useState('');
-    const [options, setOptions] = useState([]);
-    const [selectedOption, setSelectedOption] = useState('');
+    // const [options, setOptions] = useState([]);
+    // const [selectedOption, setSelectedOption] = useState('');
     const [showForm, setShowForm] = useState(false);
-    const [showResults, setShowResults] = useState(false);
-    const [results, setResults] = useState('');
+    // const [showResults, setShowResults] = useState(false);
+    // const [results, setResults] = useState('');
     const [optionType, setOptionType] = useState('');
     const [error, setError] = useState('');
 
@@ -37,9 +37,9 @@ function VotingPage() {
             return;
         }
 
-        if (selectedOption === 'radio') {
-            setOptions(['Yes', 'No']); // Example options for radio
-        }
+        // if (selectedOption === 'radio') {
+        //     // setOptions(['Yes', 'No']); // Example options for radio
+        // }
         // Example options for checkbox
         // else if (selectedOption === 'checkbox') {
         //     setOptions(['Definetely Yes', 'Not sure', 'No way']); 
@@ -53,13 +53,13 @@ function VotingPage() {
         try {
             const response = await axios.post(`${baseURL}/questions`, newQuestion);
             navigate(`/voting/${response.data[response.data.length - 1].qid}`);
-            setShowResults(true);
+            // setShowResults(true);
             setShowForm(true);
             // Reset error message
             setError('');
-            if (selectedOption === 'radio') {
-                setOptions(['Yes', 'No']); // Example options for radio
-            }
+            // if (selectedOption === 'radio') {
+            //     // setOptions(['Yes', 'No']); // Example options for radio
+            // }
             // Example options for checkbox
             // if (selectedOption === 'checkbox') {
             //     setOptions(['Definetely Yes', 'Not sure', 'No way']); 
