@@ -15,7 +15,8 @@ function VotingPage() {
     const [error, setError] = useState('');
 
 
-    const baseURL = 'http://localhost:5050';
+    // const baseURL = 'http://localhost:5050';
+    const baseURL = `${process.env.REACT_APP_API_URL}`;
     const navigate = useNavigate();
 
     const handleQuestionChange = (event) => {

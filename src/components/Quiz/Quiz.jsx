@@ -17,7 +17,7 @@ const Quiz = () => {
     const [questionCountInput, setQuestionCountInput] = useState('');
     const [optionClsName, setOptionClsName] = useState('');
 
-    const baseURL = 'http://localhost:5050/quiz';
+    const baseURL = `${process.env.REACT_APP_API_URL}/quiz`;
     const navigate = useNavigate();
 
     //validation check

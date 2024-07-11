@@ -11,7 +11,8 @@ const PollQuestion = () => {
     const [resultText, setResultText] = useState(false);
 
     const params = useParams();
-    const baseURL = 'http://localhost:5050/questions';
+    // const baseURL = 'http://localhost:5050/questions';
+    const baseURL = `${process.env.REACT_APP_API_URL}/questions`;
     const navigate = useNavigate();
 
     useEffect(() => {
